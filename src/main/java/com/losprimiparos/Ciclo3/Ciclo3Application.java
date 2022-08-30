@@ -1,5 +1,6 @@
 package com.losprimiparos.Ciclo3;
 
+import com.losprimiparos.Ciclo3.Modelos.Empresa;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
@@ -14,6 +15,13 @@ public class Ciclo3Application {
 	public String hello(){
 		return "Hola... vas bien!!!, etas lejos aún.... perseva saldras vivo de esto";
 	}
+
+	/**@GetMapping("/test")
+	public String test(){
+		Empresa = new Empresa();
+		return null;
+	}*/
+
 
 	public static void main(String[] args) {
 
