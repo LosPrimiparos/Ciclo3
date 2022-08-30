@@ -26,4 +26,12 @@ public class Empresa {
     private LocalDateTime actualizacionEmpresa;
     private ArrayList<Empleado> empleadoList;
     private ArrayList <MovimientoDinero> movimientoDineroList;
+
+    public Empresa(String nombreEmpresa, String nitEmpresa, String direccionEmpresa, String emailEmpresa, String telefonoEmpresa) {
+        this.nombreEmpresa = nombreEmpresa;
+        this.nitEmpresa = nitEmpresa;
+        this.direccionEmpresa = direccionEmpresa;
+        this.emailEmpresa = emailEmpresa;
+        this.telefonoEmpresa = telefonoEmpresa;
+    }
 }

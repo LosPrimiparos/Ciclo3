@@ -13,14 +13,14 @@ public class Ciclo3Application {
 
 	@GetMapping("/hello")
 	public String hello(){
-		return "Hola... vas bien!!!, etas lejos aún.... perseva saldras vivo de esto";
+		return "Hola... vas bien!!!, etamos empezando.... perseva saldras vivo de esto!!!!";
 	}
 
-	/**@GetMapping("/test")
+	@GetMapping("/test")
 	public String test(){
-		Empresa = new Empresa();
-		return null;
-	}*/
+		Empresa emp = new Empresa("Servimorel Ltda.", "820.003.414-4", "Calle # 10 -40, Miraflores - Boyaca", "gerencia@servimorel.com", "3103025461");
+		return emp.getNombreEmpresa();
+	}
 
 
 	public static void main(String[] args) {
