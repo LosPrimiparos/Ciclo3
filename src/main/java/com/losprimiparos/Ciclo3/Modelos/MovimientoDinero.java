@@ -1,105 +1,42 @@
 package com.losprimiparos.Ciclo3.Modelos;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table(name = "transacciones")
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 public class MovimientoDinero {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int idTransaccion;
+    private Long idTransaccion;
+
+    @ManyToOne
+    @JoinColumn(name = "Empresa_id")
+    private Empresa empresa;
+
+    @Column(name = "tipo_transaccion", length = 20, nullable = false)
     private String tipoTransaccion;
+
+    @Column(name = "monto_transaccion", length = 10, nullable = false)
     private double montoTransaccion;
+
+    @Column(name = "concepto_transaccion", length = 70, nullable = false)
     private String conceptoTransaccion;
-    private LocalDateTime creacionTransaccion;
 
-    @ManyToOne
-    @JoinColumn(name = "empresa_idtransaccion")
-    private Empresa empresaUsuario;
 
-    @ManyToOne
-    @JoinColumn (name = "empleado_idtransaccion")
-    private Empleado usuario;
-    private LocalDateTime actulizacionTransaccion;
 
-    public MovimientoDinero(String tipoTransaccion, double montoTransaccion, String conceptoTransaccion, Empresa empresaUsuario, Empleado usuario) {
-        this.tipoTransaccion = tipoTransaccion;
-        this.montoTransaccion = montoTransaccion;
-        this.conceptoTransaccion = conceptoTransaccion;
-        this.empresaUsuario = empresaUsuario;
-        this.usuario = usuario;
-    }
+   //@ManyToOne
+   // @JoinColumn(name = "Empleado_id")
+   // private Empleado usuario;
 
-    public int getIdTransaccion() {
-        return idTransaccion;
-    }
+    //@Column(name = "fecha_creacion")
+    //private LocalDateTime creacionTransaccion;
 
-    public void setIdTransaccion(int idTransaccion) {
-        this.idTransaccion = idTransaccion;
-    }
-
-    public String getTipoTransaccion() {
-        return tipoTransaccion;
-    }
-
-    public void setTipoTransaccion(String tipoTransaccion) {
-        this.tipoTransaccion = tipoTransaccion;
-    }
-
-    public double getMontoTransaccion() {
-        return montoTransaccion;
-    }
-
-    public void setMontoTransaccion(double montoTransaccion) {
-        this.montoTransaccion = montoTransaccion;
-    }
-
-    public String getConceptoTransaccion() {
-        return conceptoTransaccion;
-    }
-
-    public void setConceptoTransaccion(String conceptoTransaccion) {
-        this.conceptoTransaccion = conceptoTransaccion;
-    }
-
-    public LocalDateTime getCreacionTransaccion() {
-        return creacionTransaccion;
-    }
-
-    public void setCreacionTransaccion(LocalDateTime creacionTransaccion) {
-        this.creacionTransaccion = creacionTransaccion;
-    }
-
-    public Empresa getEmpresaUsuario() {
-        return empresaUsuario;
-    }
-
-    public void setEmpresaUsuario(Empresa empresaUsuario) {
-        this.empresaUsuario = empresaUsuario;
-    }
-
-    public Empleado getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Empleado usuario) {
-        this.usuario = usuario;
-    }
-
-    public LocalDateTime getActulizacionTransaccion() {
-        return actulizacionTransaccion;
-    }
-
-    public void setActulizacionTransaccion(LocalDateTime actulizacionTransaccion) {
-        this.actulizacionTransaccion = actulizacionTransaccion;
-    }
 }

@@ -1,51 +1,50 @@
 package com.losprimiparos.Ciclo3.Modelos;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table(name = "Empleado")
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 public class Empleado {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int idEmpleado;
-    private String nombresEmpleado;
-    private String imagenEmpleado;
+    private Long idEmpleado;
+
+    @Column(name = "nombre_empleado", length = 70, nullable = false)
+    private String nombreEmpleado;
+
+    @Column(name = "email_empleado", length = 70, nullable = false)
     private String emailEmpleado;
-    private String numTelEmpleado;
+
     @ManyToOne
-    @JoinColumn(name = "empresa_idempresa")
+    @JoinColumn(name = "Empresa_id")
     private Empresa empresa;
-    private String userEmpleado;
+
+    @Column(name = "role_empleado", length = 15)
     private String roleEmpleado;
-    private LocalDateTime creacionEmpleado;
-    private LocalDateTime actualizacionEmpleado;
-    private ArrayList<MovimientoDinero> movimientoDineroEmpleadoList;
 
-    public Empleado(String nombresEmpleado, String imagenEmpleado, String emailEmpleado, String numTelEmpleado, Empresa empresa, String roleEmpleado) {
-        this.nombresEmpleado = nombresEmpleado;
-        this.imagenEmpleado = imagenEmpleado;
-        this.emailEmpleado = emailEmpleado;
-        this.numTelEmpleado = numTelEmpleado;
-        this.empresa = empresa;
-        this.roleEmpleado = roleEmpleado;
-    }
 
-    public Empresa getEmpresaEmpleado() {
-        return empresa;
-    }
+    //@OneToMany
+    //private List<MovimientoDinero> transaccionesEmpleadoList;
 
-    public void setEmpresaEmpleado(Empresa empresaEmpleado) {
-        this.empresa = empresaEmpleado;
-    }
+    //@Column(name = "usuario", length = 70)
+    //private String userEmpleado;
+
+    //@Column(name = "telefono_empleado", length = 12, nullable = false)
+    //private String numTelEmpleado;
+
+    //private String imagenEmpleado;
+    //private LocalDateTime creacionEmpleado;
+    //private LocalDateTime actualizacionEmpleado;
+
 
 }
