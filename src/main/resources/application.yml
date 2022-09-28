@@ -5,8 +5,8 @@ spring:
       client:
         registration:
           auth0:
-            client-id: SmWouTGW7H4vzLinESLEblkrY7AkvAqe
-            client-secret: JQzAtfni_shFga2OI4-k100csMiRVWEW1FWfkqfQz6klrETI6gL1nv-bZsq2u7V3
+            client-id:
+            client-secret:
             scope:
               - openid
               - profile
@@ -14,4 +14,4 @@ spring:
         provider:
           auth0:
             # trailing slash is important!
-            issuer-uri: https://espitaleta.us.auth0.com/
+            issuer-uri:
