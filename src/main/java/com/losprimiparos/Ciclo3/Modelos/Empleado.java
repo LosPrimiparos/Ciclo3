@@ -16,22 +16,41 @@ import java.util.List;
 public class Empleado {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long idEmpleado;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int idEmpleado;
 
-    @Column(name = "nombre_empleado", length = 70, nullable = false)
+    @Column(name = "nombre_empleado")
     private String nombreEmpleado;
 
-    @Column(name = "email_empleado", length = 70, nullable = false)
+    @Column(name = "email_empleado", unique = true)
     private String emailEmpleado;
 
-    @ManyToOne
-    @JoinColumn(name = "Empresa_id")
-    private Empresa empresa;
-
-    @Column(name = "role_empleado", length = 15)
+    @Column(name = "role_empleado")
     private String roleEmpleado;
 
+    @Column(name = "estado_Vinculacion")
+    private Boolean estadoEmpleado;
+
+   @Column(name = "oathOId", unique = true)
+    private String oathOId;
+
+   @Column(name = "image")
+   private  String image;
+
+
+    /**public Empleado() {
+
+    }
+
+    public Empleado(String emailEmpleado, String image, String oathOId) {
+        this.emailEmpleado = emailEmpleado;
+        this.image = image;
+        this.oathOId = oathOId;
+    }*/
+
+//@ManyToOne
+    //@JoinColumn(name = "Empresa_id")
+    //private Empresa empresa;
 
     //@OneToMany
     //private List<MovimientoDinero> transaccionesEmpleadoList;

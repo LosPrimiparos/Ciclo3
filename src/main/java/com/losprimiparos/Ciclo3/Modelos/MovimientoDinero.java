@@ -1,9 +1,11 @@
 package com.losprimiparos.Ciclo3.Modelos;
 
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "transacciones")
@@ -14,29 +16,27 @@ import javax.persistence.*;
 public class MovimientoDinero {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long idTransaccion;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int idTransaccion;
+
+    @Column(name = "tipo_transaccion", length = 20, nullable = false)
+    private String tipoTransaccion;
+
+    @Column(name = "concepto_transaccion", length = 70, nullable = false)
+    private String conceptoTransaccion;
 
     @ManyToOne
     @JoinColumn(name = "Empresa_id")
     private Empresa empresa;
 
-    @Column(name = "tipo_transaccion", length = 20, nullable = false)
-    private String tipoTransaccion;
-
     @Column(name = "monto_transaccion", length = 10, nullable = false)
     private double montoTransaccion;
 
-    @Column(name = "concepto_transaccion", length = 70, nullable = false)
-    private String conceptoTransaccion;
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    private Date fecha;
 
-
-
-   //@ManyToOne
-   // @JoinColumn(name = "Empleado_id")
-   // private Empleado usuario;
-
-    //@Column(name = "fecha_creacion")
-    //private LocalDateTime creacionTransaccion;
+    @ManyToOne
+    @JoinColumn(name = "empleado_id")
+    private Empleado usuario;
 
 }

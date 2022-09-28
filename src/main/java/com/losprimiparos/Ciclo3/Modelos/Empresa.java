@@ -15,8 +15,8 @@ import java.util.List;
 public class Empresa {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long idEmpresa;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int idEmpresa;
 
     @Column(name = "nombre_empresa", length = 70, nullable = false)
     private String nombreEmpresa;
@@ -30,8 +30,14 @@ public class Empresa {
     @Column(name = "email_empresa", length = 70, nullable = false)
     private String emailEmpresa;
 
-    @Column(name = "telefono_empresa", length = 15)
+    @Column(name = "telefono_empresa", length = 15, nullable = false)
     private String telefonoEmpresa;
+
+    @Column(name = "tipo_empresa", length = 15, nullable = false)
+    private String tipoEmpresa;
+
+    //@Column(name = "fecha_creacion_empresa", length = 10, nullable = false)
+    //private LocalDateTime creacionEmpresa;
 
     //@OneToMany
     //@Column(name = "id_transsaciones")
@@ -43,10 +49,7 @@ public class Empresa {
     //@OneToMany
     //private List<MovimientoDinero> transaccionesList;
 
-    /**@Column(name = "fecha_creacion_empresa", length = 10, nullable = false)
-    private LocalDateTime creacionEmpresa;
-
-    @Column(name = "fecha_actualizacion_empresa", length = 10, nullable = false)
+    /**@Column(name = "fecha_actualizacion_empresa", length = 10, nullable = false)
     private LocalDateTime actualizacionEmpresa;*/
 
 }

@@ -1,0 +1,17 @@
+# src/main/resources/application.yml
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          auth0:
+            client-id: SmWouTGW7H4vzLinESLEblkrY7AkvAqe
+            client-secret: JQzAtfni_shFga2OI4-k100csMiRVWEW1FWfkqfQz6klrETI6gL1nv-bZsq2u7V3
+            scope:
+              - openid
+              - profile
+              - email
+        provider:
+          auth0:
+            # trailing slash is important!
+            issuer-uri: https://espitaleta.us.auth0.com/

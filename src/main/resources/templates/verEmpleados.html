@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  <title>Daily Accounting</title>
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <div class="container-fluid">
+    <!--<a class="navbar-brand" href="#">Fixed navbar</a>-->
+    <p th:inline="text" class="navbar-brand text-left" style="float:left">User: [[${#httpServletRequest.remoteUser}]]</p>
+
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        <li class="nav-item">
+          <a class="nav-link active" th:href="@{/app}" role="button"> Inicio </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" th:href="@{/enterprises}" role="button"> Empresas Registradas </a>
+
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" th:href="@{/movements}" role="button"> Transacciones Realizadas </a>
+        </li>
+      </ul>
+      <button type="button" class="btn btn-outline-success" style="float:right"><a th:href="@{/inicio}">Cerrar Sesión</a></button>
+
+    </div>
+  </div>
+</nav>
+
+<main>
+
+  <div class="px-5 py-4 my-5">
+    <h1 class="my-1 text-center">EMPLEADOS REGISTRADOS</h1>
+  </div>
+
+  <div class="container mt-4">
+
+    <div>
+      <a class="btn btn-info" th:href="@{/formUser}" role="button">Agregar Nuevo Empleado</a>
+    </div>
+
+    <br>
+
+    <table class="table table-bordered">
+      <thead class="text-center">
+      <tr>
+        <td>NOMBRES Y APELLIDOS</td>
+        <td>EMAIL</td>
+        <td>USUARIO</td>
+        <td>ETADO VINCULACION</td>
+        <td>ACCIONES</td>
+
+      </tr>
+      </thead >
+      <tbody class="text-center">
+      <tr th:each="empleado : ${todosLosEmpleados}">
+        <td th:text="${empleado.nombreEmpleado}"></td>
+        <td th:text="${empleado.emailEmpleado}"></td>
+        <td th:text="${empleado.roleEmpleado}"></td>
+        <td th:text="${empleado.estadoEmpleado}"></td>
+        <td>
+          <a th:href="@{/user/}+${empleado.idEmpleado}"  class="btn btn-warning" >Editar</a>
+          <!--<a th:href="@{/desvincularEmpleado/}+${empleado.idEmpresa}"  class="btn btn-danger">Eliminar</a>-->
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
